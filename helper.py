@@ -1,13 +1,84 @@
 import os
+import random
+import requests
 
 device_id = 'YLDYKZT44TAUTS6L'
 
+
+response = requests.get("https://names.drycodes.com/1?combine=2&nameOptions=boy_names")
+names = response.json()
+
+def generateAPassword():
+    for i in names:
+        res = i
+        return res
+
+def generateFirstName():
+    for i in names:
+        res = i.split('_')[0]
+        return res
+
+def generateLastName():
+    for i in names:
+        res = i.split('_')[1]
+        return res
+
+def generatePassword():
+    for i in names:
+        res = i
+        return res
 
 def pressKey(keycode):
     os.system(f'adb -s '+ device_id +' shell input keyevent KEYCODE_' + keycode)
 
 def pressSend():
     os.system(f'adb -s ' + device_id + ' shell input tap 985 2230') 
+
+    
+def randomMonth():
+    monthCoordinates = {
+        "jan":"350 225",
+        "feb":"350 360",
+        "mar":"350 450",
+        "apr":"350 550",
+        "may":"350 650",
+        "jun":"350 750",
+        "jul":"350 850",
+        "aug":"350 950",
+        "sep":"350 1050",
+        "oct":"350 1150",
+        "nov":"350 1250",
+        "dec":"350 1350",
+    }
+    res = random.choice(list(monthCoordinates.values()))
+    return res
+
+def randomDay():
+    day = random.randrange(1, 28, 1)
+    return day
+
+def randomYear():
+    year = random.randrange(1975, 1999, 1)
+    return year
+
+def randomGender():
+    genderCoordinates = {
+        "m":"255 750",
+        "f":"255 650"
+    }
+    res = random.choice(list(genderCoordinates.values()))
+    return res
+
+
+point = "Ronnie"
+for i in point:
+    pressKey(i)
+
+
+
+
+
+
 
 # ALPHABET FUNCTION
 # def pressA():
