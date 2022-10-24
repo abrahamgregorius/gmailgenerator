@@ -70,14 +70,6 @@ def randomGender():
     return res
 
 
-point = "Ronnie"
-for i in point:
-    pressKey(i)
-
-
-
-
-
 
 
 # ALPHABET FUNCTION

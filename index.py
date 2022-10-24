@@ -33,12 +33,12 @@ os.system(f'adb -s '+ device_id + ' shell input tap 590 210')
 os.system(f'adb -s '+ device_id + ' shell input swipe 400 1445 400 211')
 os.system(f'adb -s '+ device_id + ' shell input swipe 400 1445 400 211')
 os.system(f'adb -s '+ device_id + ' shell input tap 330 1045')
-sleep(1)
+sleep(5)
 
 # Creating account
-os.system(f'adb -s '+ device_id + ' shell input tap 330 450')
-sleep(1)
-os.system(f'adb -s '+ device_id + ' shell input tap 330 990')
+os.system(f'adb -s '+ device_id + ' shell input tap 330 408')
+sleep(5)
+os.system(f'adb -s '+ device_id + ' shell input tap 330 1290')
 sleep(5)
 
 # Type password
@@ -54,7 +54,7 @@ sleep(10)
 os.system(f'adb -s '+ device_id + ' shell input tap 180 680')
 os.system(f'adb -s '+ device_id + ' shell input tap 170 750')
 
-sleep(5)
+sleep(10)
 
 # Press First Name
 os.system(f'adb -s '+ device_id + ' shell input tap 288 458')
@@ -72,15 +72,15 @@ for i in split:
     helper.pressKey(i)
 helper.pressKey('ENTER')
 
-sleep(5)
+sleep(2)
 
 # Type the last name
-split = [*lastname.upper()]
-for i in split:
+splut = [*lastname.upper()]
+for i in splut:
     helper.pressKey(i)
 helper.pressKey('ENTER')
 
-sleep(7)
+sleep(3)
 
 # Set the month
 month = helper.randomMonth()
@@ -121,7 +121,36 @@ sleep(5)
 
 # Input password
 os.system(f'adb -s '+ device_id + ' shell input tap 200 500')
-p = helper.generateAPassword()
-passw = str(p)
-for i in passw:
+
+spt = [*firstname.upper()]
+for i in spt:
     helper.pressKey(i)
+
+spl = [*lastname.upper()]
+for i in spl:
+    helper.pressKey(i)
+randpass = random.randrange(100,999,1)
+passrand = str(randpass)
+for i in passrand:
+    helper.pressKey(i)
+
+password = firstname + lastname + passrand
+sleep(2)
+print("The password is: " + password)
+
+# Press next
+os.system(f'adb -s '+ device_id + ' shell input tap 620 950')
+
+# Swipe up and pess next
+os.system(f'adb -s '+ device_id + ' shell input swipe 400 1445 400 211')
+os.system(f'adb -s '+ device_id + ' shell input swipe 400 1445 400 211')
+os.system(f'adb -s '+ device_id + ' shell input tap 110 1475')
+
+# Press next
+os.system(f'adb -s '+ device_id + ' shell input tap 620 1475')
+
+# Privacy policy page, press next
+os.system(f'adb -s '+ device_id + ' shell input swipe 400 1445 400 211')
+os.system(f'adb -s '+ device_id + ' shell input swipe 400 1445 400 211')
+os.system(f'adb -s '+ device_id + ' shell input tap 580 1470')
+print("The password is: " + password)
